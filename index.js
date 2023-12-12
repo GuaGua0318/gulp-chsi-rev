@@ -1,7 +1,7 @@
 "use strict";
 /**
  * @description 文件版本号输出方式；截取字符串，避免出现多个版本号叠加；修改远程链接版本号，如果已存在则替换；
- * @modify      huanghui8030@qq.com, bert1100@126.com
+ * @modify      
  * @date        20161226  
  * @modify      v1.2.0 20190528 每次更改时，用同一个时间戳。以及注释的删除
  */
@@ -22,7 +22,7 @@ var ASSET_REG = {
     // "STYLESHEET": /(<link[^>]+href=)['"]([^'"]+)["']/ig,
     // "style-path": /(<link[^>]+path=)['"]([^'"]+)["']/ig,
 
-    "CSS": /(['"])([^\s'"].*?)\1/ig, // 修改在css中的探测内容 20190527 weij
+    "CSS": /(['"])([^\s'].*?(js|css))\1/ig, // 修改在css中的探测内容 20190527 weij
     // "IMAGE": /(<img[^>]+src=)['"]([^'"]+)["']/ig,
     // "BACKGROUND": /(url\()(?!data:|about:)([^)]*)/ig,
     "dynamic-loading": /(<script>[^>]+addFile[(]['"]{css||js}['"][,])(['"])([^\s'"].*?)\2/ig   //js动态加载的内容 20170306 huanghui 
@@ -39,7 +39,6 @@ console.log('当前时间戳为：'+getDate);
 console.log(colors.red.bold('提醒：按照css规范和xss安全策略要求，在css/less中写的url()中资源路径须加引号，否则不予转换！'));
 module.exports = function (options) {
     return through.obj(function (file, enc, cb) {
-     
         options = options || {};
 
         if (file.isNull()) {
@@ -66,7 +65,7 @@ module.exports = function (options) {
                     }
 
                     // 排除.html 静态资源（根据公司cdn设置规则）
-                    if(/.+\.html$/g.test(src)){
+                    if(/.+\.(min.js|layui.all.js|html)$/g.test(src)){
                         return str;
                     }
                     // 排除cdn的common目录下的静态资源
@@ -86,7 +85,7 @@ module.exports = function (options) {
                     }else{
                         src = src+'?v='+ getDate;; // 直接加版本号
                     }
-
+                    console.log('ggggggggggg',tag,src,tag)
                     return tag + src + tag;
                 });
             }
