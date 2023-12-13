@@ -1,11 +1,11 @@
-## gulp-chsi-rev
+## gulp-chsi-revv
 
 基于gulp的插件，静态资源后面添加时间戳作为版本号，达到去缓存的作用。
 
 ## Installation安装
 
 ```bash
-npm install gulp-chsi-rev
+npm install gulp-chsi-revv
 ```
 
 ## Usage用法
