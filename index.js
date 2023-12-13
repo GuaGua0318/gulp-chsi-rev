@@ -13,10 +13,10 @@ var colors = require('colors');
 var gutil = require('gulp-util');
 var through = require('through2');
 
-var PLUGIN_NAME = 'gulp-chsi-rev';
+var PLUGIN_NAME = 'gulp-chsi-rev'; 
 
 var ASSET_REG = {
-    // 暂停以下解析，加快gulp处理less文件速度
+    // 暂停以下解析，加快gulp处理less文件速度 z
     // "SCRIPT": /(<script[^>]+src=)['"]([^'"]+)["']/ig,
     // "script-path": /(<script[^>]+path=)['"]([^'"]+)["']/ig,
     // "STYLESHEET": /(<link[^>]+href=)['"]([^'"]+)["']/ig,
