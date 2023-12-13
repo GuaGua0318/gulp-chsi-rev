@@ -3,7 +3,7 @@
  * @description 文件版本号输出方式；截取字符串，避免出现多个版本号叠加；修改远程链接版本号，如果已存在则替换；
  * @modify      huanghui8030@qq.com, bert1100@126.com
  * @date        20161226  
- * @modify      v1.2.0 20190528 每次更改时，用同一个时间戳。以及注释的删除 
+ * @modify      v1.2.0 20190528 每次更改时，用同一个时间戳。以及注释的删除 z
  */
 var path = require('path');
 var fs = require('fs');
