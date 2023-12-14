@@ -29,8 +29,5 @@
     "gulp": "^3.9.1",
     "gulp-util": "^3.0.0",
     "through2": "^0.6.1"
-  },
-  "publishConfig": {
-    "registry": "https://registry.npmjs.org/gulp-chsi-revv"
   }
 }
