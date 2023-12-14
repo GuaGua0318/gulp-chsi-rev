@@ -24,12 +24,12 @@ jobs:
       # - name: Build
       #   run: npm run build
 
-      - name: 登录到 npm
-        run: npm login --registry=https://registry.npmjs.org/ --scope=@gulp-chsi-revv
-        env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+      # - name: 登录到 npm
+      #   run: npm login --registry=https://registry.npmjs.org/ --scope=@gulp-chsi-revv
+      #   env:
+      #     NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Publish to NPM
         run: npm publish
-        # env:
-        #   NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
