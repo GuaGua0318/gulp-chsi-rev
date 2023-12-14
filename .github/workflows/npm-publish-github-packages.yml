@@ -24,6 +24,12 @@ jobs:
       # - name: Build
       #   run: npm run build
 
+      name: adduser to NPM
+        run: npm adduser
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+
       - name: Publish to NPM
         run: npm publish
         env:
