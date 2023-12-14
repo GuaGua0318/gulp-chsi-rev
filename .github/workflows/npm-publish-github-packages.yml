@@ -25,7 +25,7 @@ jobs:
       #   run: npm run build
 
       - name: login to npm
-        run: echo "//registry.npmjs.org/:_authToken=\${{ secrets.NPM_TOKEN }}" > ~/.npmrc
+        run: echo "//registry.npmjs.org/ --scope=@gulp-chsi-revv:_authToken=\${{ secrets.NPM_TOKEN }}" > ~/.npmrc
 
       - name: Publish to NPM
         run: npm publish
