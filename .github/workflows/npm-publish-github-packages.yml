@@ -24,8 +24,10 @@ jobs:
       # - name: Build
       #   run: npm run build
 
-      - name: login to npm
-        run: echo "//registry.npmjs.org/:_authToken=\${{ secrets.NPM_TOKEN }}" > ~/.npmrc
+      - name: 登录到 npm
+        run: npm login --registry=https://registry.npmjs.org/ --scope=@gulp-chsi-revv --always-auth
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Publish to NPM
         run: npm publish
