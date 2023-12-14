@@ -25,9 +25,7 @@ jobs:
       #   run: npm run build
 
       - name: login to npm
-        run: npm login --registry=https://registry.npmjs.org/ --always-auth
-        env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: echo "//registry.npmjs.org/:_authToken=\${{ secrets.NPM_TOKEN }}" > ~/.npmrc
 
       - name: Publish to NPM
         run: npm publish
