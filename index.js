@@ -51,16 +51,22 @@ module.exports = function (options) {
             return cb();
         }
 
-        var content = file.contents.toString();
+        // console.log('----file',file.path.includes('.png'))
+        var content
+        if(!file.path.includes('.png')){
+            content = file.contents.toString();
+        }
 
         var filePath = path.dirname(file.path);
 
+
         for (var type in ASSET_REG) {
             if (type === "BACKGROUND" && !/\.(css|scss|less)$/.test(file.path)) {
-            } else {
-                content = content.replace(ASSET_REG[type], function (str, tag, src) {  
+                
+            } else if(/^(?!.*\.png$).*/.test(file.path)) {
+                content = content.replace(ASSET_REG[type], function (str, tag, src) {
                     // 过滤目标对象
-                    if (!/[^\\]\.[^\.]+$/.test(src)) {
+                    if (!/[^\\]\.[^\.]+(?<!\.min)\.js$/.test(src)) {
                         return str;
                     }
 
@@ -91,7 +97,10 @@ module.exports = function (options) {
         }
 
         // 鉴于安全性，不再使用 new Buffer(content)
-        file.contents = Buffer.from(content);
+        if(!file.path.includes('.png')){
+            file.contents = Buffer.from(content);
+        }
+        // file.contents = Buffer.from(content);
         this.push(file);
         cb();
     });
